@@ -1,0 +1,187 @@
+@import "@fontsource/fredoka/400.css";
+@import "@fontsource/fredoka/500.css";
+@import "@fontsource/fredoka/600.css";
+@import "@fontsource/fredoka/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Valentine's Day Romantic Design System */
+
+@layer base {
+  :root {
+    /* Main romantic palette */
+    --background: 350 50% 97%;
+    --foreground: 350 40% 20%;
+
+    --card: 350 45% 95%;
+    --card-foreground: 350 40% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 350 40% 20%;
+
+    /* Soft pink primary */
+    --primary: 340 70% 75%;
+    --primary-foreground: 350 40% 15%;
+
+    /* Cream secondary */
+    --secondary: 35 50% 93%;
+    --secondary-foreground: 350 40% 25%;
+
+    /* Muted lilac */
+    --muted: 280 30% 92%;
+    --muted-foreground: 280 20% 45%;
+
+    /* Soft rose accent */
+    --accent: 350 60% 80%;
+    --accent-foreground: 350 50% 20%;
+
+    /* Soft red for love elements */
+    --love: 355 65% 70%;
+    --love-foreground: 0 0% 100%;
+
+    /* Lilac for subtle accents */
+    --lilac: 280 45% 82%;
+    --lilac-foreground: 280 40% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 350 30% 88%;
+    --input: 350 30% 88%;
+    --ring: 340 70% 75%;
+
+    --radius: 1rem;
+
+    /* Custom Valentine gradients */
+    --gradient-romantic: linear-gradient(135deg, hsl(350 50% 97%), hsl(340 60% 92%), hsl(280 40% 94%));
+    --gradient-love: linear-gradient(180deg, hsl(350 60% 85%), hsl(355 65% 75%));
+    --gradient-sunset: linear-gradient(to bottom, hsl(35 50% 95%), hsl(350 50% 94%), hsl(280 35% 92%));
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(350 50% 70% / 0.2);
+    --shadow-glow: 0 0 30px hsl(340 70% 75% / 0.3);
+    --shadow-heart: 0 2px 10px hsl(355 65% 70% / 0.4);
+  }
+
+  .dark {
+    --background: 350 30% 10%;
+    --foreground: 350 20% 95%;
+    --card: 350 25% 15%;
+    --card-foreground: 350 20% 95%;
+    --popover: 350 25% 12%;
+    --popover-foreground: 350 20% 95%;
+    --primary: 340 60% 65%;
+    --primary-foreground: 350 30% 10%;
+    --secondary: 35 30% 20%;
+    --secondary-foreground: 35 20% 90%;
+    --muted: 280 20% 20%;
+    --muted-foreground: 280 15% 70%;
+    --accent: 350 50% 35%;
+    --accent-foreground: 350 20% 95%;
+    --love: 355 55% 55%;
+    --love-foreground: 0 0% 100%;
+    --lilac: 280 35% 40%;
+    --lilac-foreground: 280 20% 95%;
+    --border: 350 20% 25%;
+    --input: 350 20% 25%;
+    --ring: 340 60% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
+    background: var(--gradient-romantic);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .romantic-title {
+    font-family: 'Fredoka', 'Caveat', cursive;
+    font-weight: 600;
+    @apply text-foreground tracking-wide;
+  }
+
+  .cartoon-text {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 500;
+  }
+
+  .heart-counter {
+    @apply bg-popover/90 backdrop-blur-sm rounded-full px-5 py-3;
+    box-shadow: var(--shadow-soft), 0 0 20px hsl(340 70% 75% / 0.15);
+    border: 2px solid hsl(var(--primary) / 0.2);
+  }
+
+  .message-popup {
+    @apply bg-popover rounded-3xl p-5 max-w-xs;
+    box-shadow: var(--shadow-soft), 0 8px 32px hsl(355 65% 70% / 0.2);
+    border: 3px solid hsl(var(--primary) / 0.3);
+  }
+
+  .valentine-button {
+    @apply rounded-full px-8 py-4 font-semibold transition-all duration-300;
+    font-family: 'Fredoka', system-ui, sans-serif;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .valentine-button-yes {
+    @apply valentine-button bg-love text-love-foreground;
+    font-size: 1.25rem;
+    &:hover {
+      transform: scale(1.08);
+      box-shadow: var(--shadow-glow), 0 8px 30px hsl(355 65% 60% / 0.4);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .valentine-button-no {
+    @apply valentine-button bg-muted text-muted-foreground;
+    font-size: 1.1rem;
+  }
+
+  .pixel-heart {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 3px 6px hsl(355 65% 60% / 0.4));
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--love) / 0.3);
+  }
+
+  /* Animated sparkle effect */
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  .sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .touch-none {
+    touch-action: none;
+  }
+  
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
